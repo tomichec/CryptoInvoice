@@ -19,6 +19,8 @@ git clone https://github.com/pavelurbaczka/CryptoInvoice
 
 For the CryptoInvoice you need to have a http[d] server (e.g. apache) with a PHP (>= 7.1.3) and SQL database (e.g. mariadb).
 
+#### Webserver
+
 Configure your webserver (for apache edit `/etc/httpd/conf/httpd.conf`) to point to the CryptoInvoice installation
 ```
 DocumentRoot "/var/www/CryptoInvoice/public"
@@ -35,6 +37,22 @@ and allow access by including the following lines
 
 
 (TODO: write more detailed description)
+
+#### Database
+
+(INCOMPLETE)
+
+If you are using a mariadb (mysql fork) than create a new database "ci" and then run
+```
+mysql -u USER -p < db/cryptoinvoice_tables.sql
+```
+for your database USER (independent of your system's user name), in order to create the database table structure.
+
+You can also insert some example entries for testing purposes by
+```
+mysql -u USER -p ci < db/testing_data.sql
+```
+
 
 ### Installation
 
