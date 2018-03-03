@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class ExampleController extends Controller
 {
     /**
@@ -15,4 +17,15 @@ class ExampleController extends Controller
     }
 
     //
+
+    public function greeter() {
+        return 'Hello World';
+    }
+
+    public function greetName(Request $request) {
+        //
+        $name = $request->input('name');
+        return "Hi " . $name;
+    }
+
 }

@@ -11,6 +11,26 @@
 |
 */
 
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'foo'], function () use ($router) {
+    $router->get('', 'ExampleController@greeter');
+    $router->post('', 'ExampleController@greetName');
+});
+
+$router->group(['prefix' => 'invoices'], function () use ($router) {
+    $router->get('', 'InvoicesController@getInvoices');
+    $router->post('new', 'InvoicesController@addInvoice');
+    $router->get('{id}', 'InvoicesController@showInvoice');
+});
+
+$router->group(['prefix' => 'users'], function () use ($router) {
+    $router->get('', 'UsersController@getUsers');
+    $router->post('new', 'UsersController@addUser');
+    $router->get('{id}', 'UsersController@showUser');
+    $router->delete('{id}', 'UsersController@deleteUser');
+});
+
